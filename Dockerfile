@@ -14,13 +14,11 @@ RUN npm install
 COPY . .
 
 # Copy the .env file to the working directory
-COPY .env .env
+COPY .env /usr/src/app
 
-# Change the working directory to the src folder
-WORKDIR /usr/src/app/src
 
 # Expose the port that the app will run on
 EXPOSE 3000
 
 # Command to run the application
-CMD ["node", "../server.js"]
+CMD ["node", "server.js"]
