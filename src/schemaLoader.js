@@ -27,7 +27,14 @@ const loadSchemas = async () => {
       const { tableName, fields } = schema;
       const createTableQuery = `CREATE TABLE IF NOT EXISTS ${tableName} (${fields.join(',')})`;
       connection.query(createTableQuery, (error, results, fields) => {
-        if (error) throw error;
+        if (error) {
+          console.log('MySQL Connection Configuration:', {
+            host: process.env.DB_HOST,
+            user: process.env.DB_USERNAME, // Or DB_USER, based on your .env file
+            password: process.env.DB_PASSWORD,
+            database: process.env.DB_NAME
+          });
+          throw error};
         console.log(`Table ${tableName} has been created or updated.`);
       });
     });
