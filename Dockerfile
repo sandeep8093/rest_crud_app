@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Copy the .env file to the working directory
-COPY .env /usr/src/app
+COPY .env .
 
 
 # Expose the port that the app will run on
